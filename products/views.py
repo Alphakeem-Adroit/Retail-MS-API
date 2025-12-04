@@ -1,15 +1,30 @@
-# from django.shortcuts import render
+# # from django.shortcuts import render
 
-from rest_framework import generics
-from .models import Product
-from .serializers import ProductSerializer
+# from rest_framework import generics
+# from .models import Product
+# from .serializers import ProductSerializer
 
-# List all products with images
-class ProductListView(generics.ListAPIView):
+# # List all products with images
+# class ProductListView(generics.ListAPIView):
+#     queryset = Product.objects.all().order_by('-created_at')
+#     serializer_class = ProductSerializer
+
+# # Retrieve a single product with images
+# class ProductDetailView(generics.RetrieveAPIView):
+#     queryset = Product.objects.all()
+#     serializer_class = ProductSerializer
+
+from rest_framework import viewsets
+from .models import Product, ProductImage
+from .serializers import ProductSerializer, ProductImageSerializer
+
+class ProductViewSet(viewsets.ModelViewSet):
+    """
+    A viewset that provides CRUD operations for Products
+    """
     queryset = Product.objects.all().order_by('-created_at')
     serializer_class = ProductSerializer
 
-# Retrieve a single product with images
-class ProductDetailView(generics.RetrieveAPIView):
-    queryset = Product.objects.all()
-    serializer_class = ProductSerializer
+# class ProductImageViewSet(viewsets.ModelViewSet):
+#     queryset = ProductImage.objects.all()
+#     serializer_class = ProductImageSerializer
