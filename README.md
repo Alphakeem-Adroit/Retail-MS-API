@@ -174,6 +174,4 @@ if settings.DEBUG:
 
 MIT License © Alphakeem Adroit
 
-```
-
 ---
