@@ -1,29 +1,15 @@
-from django.shortcuts import render
+# from django.shortcuts import render
 
-# Create your views here.
 from rest_framework import generics
-from .models import Product, ProductImage
-from .serializers import ProductSerializer, ProductImageSerializer
+from .models import Product
+from .serializers import ProductSerializer
 
-# List all products
+# List all products with images
 class ProductListView(generics.ListAPIView):
     queryset = Product.objects.all().order_by('-created_at')
     serializer_class = ProductSerializer
 
-# Retrieve a single product
+# Retrieve a single product with images
 class ProductDetailView(generics.RetrieveAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
-
-# Optional: List all product images
-class ProductImageListView(generics.ListAPIView):
-    queryset = ProductImage.objects.all()
-    serializer_class = ProductImageSerializer
-
-# Optional: Get images for a single product
-class ProductImagesByProductView(generics.ListAPIView):
-    serializer_class = ProductImageSerializer
-
-    def get_queryset(self):
-        product_id = self.kwargs['pk']
-        return ProductImage.objects.filter(product_id=product_id)
