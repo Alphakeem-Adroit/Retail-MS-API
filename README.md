@@ -1,7 +1,7 @@
 # Retail Management System (Products API)
 
 A simple **Django REST Framework API** for managing and displaying products with multiple images.  
-This project is designed for The A-M Global LTD that want to showcase products online without direct purchasing. Users can view products and contact the admin via WhatsApp.
+This project is designed for a business that want to showcase products online without direct purchasing. Users can view products and contact the admin via WhatsApp.
 
 ---
 

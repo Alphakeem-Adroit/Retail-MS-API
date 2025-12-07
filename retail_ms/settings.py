@@ -26,7 +26,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-@h(xy@gg)i4+fp_3$)l-d2q!3rw$*=_ga2&a)v-pqj)b9p6#3^')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
+
+DEBUG = os.getenv('DEBUG')
 
 ALLOWED_HOSTS = ['*']
 
@@ -140,15 +142,15 @@ SECURE_CONTENT_TYPE_NOSNIFF = True # Prevents browser from guessing content type
 
 SECURE_SSL_REDIRECT = True
 
-# if not DEBUG:
-#     # Redirect all HTTP -> HTTPS
-#     SECURE_SSL_REDIRECT = True
+if not DEBUG:
+    # Redirect all HTTP -> HTTPS
+    SECURE_SSL_REDIRECT = True
 
-#     # Use secure cookies
-#     SESSION_COOKIE_SECURE = True
-#     CSRF_COOKIE_SECURE = True
+    # Use secure cookies
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
 
-#     # HSTS (forces HTTPS on browser)
-#     SECURE_HSTS_SECONDS = 31536000  # 1 year
-#     SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-#     SECURE_HSTS_PRELOAD = True
+    # HSTS (forces HTTPS on browser)
+    SECURE_HSTS_SECONDS = 31536000  # 1 year
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_PRELOAD = True
