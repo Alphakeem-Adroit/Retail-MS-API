@@ -28,7 +28,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-@h(xy@gg)i4+fp
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -132,3 +132,23 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# SECURITY
+X_FRAME_OPTIONS = "DENY" # Prevent this API from being embedded in iframes
+
+SECURE_CONTENT_TYPE_NOSNIFF = True # Prevents browser from guessing content type
+
+SECURE_SSL_REDIRECT = True
+
+# if not DEBUG:
+#     # Redirect all HTTP -> HTTPS
+#     SECURE_SSL_REDIRECT = True
+
+#     # Use secure cookies
+#     SESSION_COOKIE_SECURE = True
+#     CSRF_COOKIE_SECURE = True
+
+#     # HSTS (forces HTTPS on browser)
+#     SECURE_HSTS_SECONDS = 31536000  # 1 year
+#     SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+#     SECURE_HSTS_PRELOAD = True
